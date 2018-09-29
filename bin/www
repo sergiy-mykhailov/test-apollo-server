@@ -2,10 +2,9 @@
 
 // Module dependencies.
 const http = require('http');
-const app = require('../app');
+const { app, apollo } = require('../app');
 const config = require('../config');
 const models = require('../models');
-
 
 // Get port from environment and store in Express.
 const port = normalizePort(config.port);
@@ -17,7 +16,8 @@ const server = http.createServer(app);
 models.sequelize.sync().then(() => {
   // Listen on provided port, on all network interfaces.
   server.listen(port, () => {
-    console.log('Express server listening on port ' + server.address().port);
+    console.log('Express server listening on port:', server.address().port);
+    console.info('Apollo server listening on path:', apollo.graphqlPath);
   });
 
   server.on('error', onError);
@@ -25,14 +25,6 @@ models.sequelize.sync().then(() => {
 }).catch((error) => {
   console.error('Can not sync with database:', error);
 });
-
-
-// // Listen on provided port, on all network interfaces.
-// server.listen(port, function() {
-//   console.log('Express server listening on port ' + server.address().port);
-// });
-// server.on('error', onError);
-// server.on('listening', onListening);
 
 // Normalize a port into a number, string, or false.
 function normalizePort(val) {

@@ -7,6 +7,7 @@
 * [Mocha](https://mochajs.org)
 * [Sequelize](http://docs.sequelizejs.com/)
 * [MySQL](https://www.mysql.com/)
+* [Apollo server](https://www.apollographql.com/docs/apollo-server/)
 
 
 ## Installation

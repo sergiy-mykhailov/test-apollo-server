@@ -16,8 +16,10 @@ const resolvers = require('./resolvers');
 const app = express();
 
 app.use(logger('dev'));
-app.use(bodyParser.json({ type: 'application/json' }));
+app.use(bodyParser.text({ type: 'application/graphql' }));
 app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(bodyParser.json({ type: 'application/json' }));
+// app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 // CORS
@@ -25,15 +27,14 @@ if (config.cors && config.cors.enabled) {
   app.use(cors(config.cors));
 }
 
-// auth
-app.use(passport.initialize());
-jwtStrategy(passport);
+// // auth
+// app.use(passport.initialize());
+// jwtStrategy(passport);
 
 // graphql
-const server = new ApolloServer({ typeDefs, resolvers });
-server.applyMiddleware({ app });
+const apollo = new ApolloServer({ typeDefs, resolvers });
+apollo.applyMiddleware({ app });
 
-console.log(config.host, config.port, server.graphqlPath);
 // // api
 // app.use('/graphql', api(passport));
 
@@ -54,4 +55,4 @@ app.use((err, req, res, next) => {
   res.status(status).json(error);
 });
 
-module.exports = app;
+module.exports = { app, apollo };

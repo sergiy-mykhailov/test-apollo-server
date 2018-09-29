@@ -10,7 +10,8 @@ type User {
   lastName:   String
 }
 type Query {
-  getUser: User
+  user: User
+  users: [User]
 }
 type Mutation {
   addUser: User

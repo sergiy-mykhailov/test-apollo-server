@@ -3,8 +3,9 @@
 
 module.exports = {
   Query: {
-    getUser: async (_, args, { user, User }) => {
+    user: async (_, args, { user, User }) => {
       console.log('getUser', _, args, user, User);
+      return 'Hello user';
       // if (!!user) {
       //   const contextUser = user
       //   const dbUser = await User.find({ email: contextUser.email }).exec()
@@ -17,10 +18,15 @@ module.exports = {
       //   return null
       // }
     },
+  users: async (_, args, { user, User }) => {
+    console.log('users', _, args, user, User);
+    return 'Hello users';
+    },
   },
   Mutation: {
     addUser: async (_, args, { user, User }) => {
       console.log('addUser', _, args, user, User);
+      return 'Hello addUser';
       // if (user) {
       //   const contextUser = user
       //   const updatedUser = await User.findOneAndUpdate(
