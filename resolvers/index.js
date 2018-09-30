@@ -20,7 +20,7 @@ module.exports = {
     },
   users: async (_, args, { user, User }) => {
     console.log('users', _, args, user, User);
-    return 'Hello users';
+    return ['Hello users'];
     },
   },
   Mutation: {
