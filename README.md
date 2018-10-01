@@ -27,7 +27,7 @@ npm test
 
 ## Query examples
 
-###### Register:
+### Register:
 
 * *Method*: POST
 * *Headers*:
@@ -48,7 +48,7 @@ mutation {
 }
 ```
 
-###### Login:
+### Login:
 
 * *Method*: POST
 * *Headers*:

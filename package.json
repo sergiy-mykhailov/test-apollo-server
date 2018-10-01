@@ -10,9 +10,8 @@
     "start": "cross-env DEBUG=server nodemon ./scripts/start.js",
     "server1": "cross-env DEBUG=server nodemon ./test-server.js",
     "build": "node ./scripts/build.js",
-    "test": "npm run test-unit && npm run test-integration",
-    "test-unit": "cross-env NODE_ENV=test ./node_modules/.bin/mocha test/unit/*.test.js",
-    "test-integration": "cross-env NODE_ENV=test ./node_modules/.bin/mocha test/integration/*.test.js"
+    "test": "npm run test-unit",
+    "test-unit": "cross-env NODE_ENV=test ./node_modules/.bin/mocha test/unit/*.test.js"
   },
   "dependencies": {
     "apollo-server-express": "^2.1.0",
