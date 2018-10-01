@@ -2,33 +2,24 @@
 const { gql } = require('apollo-server-express');
 
 module.exports = gql`
-type User {
-  _id:        String
-  email:      String
-  password:   String
-  firstName:  String
-  lastName:   String
+input UserRegisterInput{
+  email:      String!
+  password:   String!
+  firstName:  String!
+  lastName:   String!
+}
+input UserLoginInput {
+  email:      String!
+  password:   String!
+}
+type Response {
+  success: Boolean!
+  message: String
 }
 type Query {
-  user: User
-  users: [User]
+  login(user: UserLoginInput): Response
 }
 type Mutation {
-  addUser: User
+  register(user: UserRegisterInput): Response
 }
 `;
-
-// const { graphql, GraphQLSchema, GraphQLObjectType, GraphQLString } = require('graphql');
-//
-// module.exports = new GraphQLSchema({
-//   query: new GraphQLObjectType({
-//     name: 'User',
-//     fields: {
-//       _id: { type: GraphQLString },
-//       email: { type: GraphQLString },
-//       password: { type: GraphQLString },
-//       firstName: { type: GraphQLString },
-//       lastName: { type: GraphQLString },
-//     }
-//   })
-// });

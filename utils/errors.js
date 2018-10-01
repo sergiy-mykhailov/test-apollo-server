@@ -9,10 +9,10 @@ const generateError = (status, err) => {
   }
 
   return {
-    error: {
+    errors: [{
       status,
       message,
-    }
+    }]
   };
 };
 

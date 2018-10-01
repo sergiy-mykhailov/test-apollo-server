@@ -24,3 +24,46 @@ npm start
 ```
 npm test
 ```
+
+## Query examples
+
+###### Register:
+
+* *Method*: POST
+* *Headers*:
+```
+"Content-Type": "application/graphql"
+```
+* *Body*:
+```
+mutation { 
+  register (user: {
+    email: "jack.smith@example.com",
+	password: "secret",
+	firstName: "Jack",
+	lastName: "Smith"
+  }) {
+    success
+  }
+}
+```
+
+###### Login:
+
+* *Method*: POST
+* *Headers*:
+```
+"Content-Type": "application/graphql"
+```
+* *Body*:
+```
+query { 
+  login (user: {
+    email: "jack.smith@example.com",
+	password: "secret",
+  }) {
+    success,
+    message
+  }
+}
+```
