@@ -47,4 +47,4 @@ app.use((err, req, res, next) => {
   res.status(status).json(error);
 });
 
-module.exports = { app };
+module.exports = app;

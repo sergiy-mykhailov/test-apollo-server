@@ -18,6 +18,7 @@ module.exports = {
 
       const user = await models.User.findOne({
         where: { email, password },
+        logging: false,
       });
 
       const success = (!!user);
@@ -29,7 +30,7 @@ module.exports = {
 
   Mutation: {
     register: async (obj, args) => {
-      const user = await models.User.create(writableFieldsUser(args.user));
+      const user = await models.User.create(writableFieldsUser(args.user), { logging: false });
 
       const success = (!!user);
 

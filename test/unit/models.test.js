@@ -1,6 +1,6 @@
 'use strict';
 
-var expect = require('expect.js');
+const expect = require('expect.js');
 
 describe('models/user', function () {
   before(function () {
@@ -21,7 +21,7 @@ describe('models/user', function () {
 
   describe('create', function () {
     it('creates a user', function () {
-      return this.User.create(testUser).bind(this).then(function (user) {
+      return this.User.create(testUser, { logging: false }).bind(this).then(function (user) {
         expect(user.email).to.equal(testUser.email);
         expect(user.password).to.equal(testUser.password);
         expect(user.firstName).to.equal(testUser.firstName);
@@ -32,7 +32,7 @@ describe('models/user', function () {
 
   describe('read', function () {
     it('reads a user', function () {
-      return this.User.findOne({ where: { email: testUser.email } }).bind(this).then(function (user) {
+      return this.User.findOne({ where: { email: testUser.email }, logging: false }).bind(this).then(function (user) {
         expect(user.email).to.equal(testUser.email);
         expect(user.password).to.equal(testUser.password);
         expect(user.firstName).to.equal(testUser.firstName);
@@ -43,8 +43,11 @@ describe('models/user', function () {
 
   describe('update', function () {
     it('updates a user', function () {
-      return this.User.update({ password: newPassword }, { where: { email: testUser.email } }).bind(this).then(function () {
-        return this.User.findOne({ where: { email: testUser.email } }).then(function (user) {
+      return this.User.update(
+          { password: newPassword },
+          { where: { email: testUser.email }, logging: false }
+        ).bind(this).then(function () {
+        return this.User.findOne({ where: { email: testUser.email }, logging: false }).then(function (user) {
           expect(user.password).to.equal(newPassword);
         });
       });
@@ -53,8 +56,10 @@ describe('models/user', function () {
 
   describe('delete', function () {
     it('deletes a user', function () {
-      return this.User.destroy({ where: { email: testUser.email } }).bind(this).then(function (user) {
-        return this.User.findOne({ where: { email: testUser.email } }).then(function (deletedUser) {
+      return this.User.destroy(
+          { where: { email: testUser.email }, logging: false }
+        ).bind(this).then(function (user) {
+        return this.User.findOne({ where: { email: testUser.email }, logging: false }).then(function (deletedUser) {
           expect(deletedUser).to.equal(null);
         });
       });
