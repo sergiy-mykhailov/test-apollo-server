@@ -1,4 +1,5 @@
 
+const fs = require('fs');
 const env = require('node-env-file');
 
 process.env.NODE_ENV = 'production';

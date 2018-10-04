@@ -11,7 +11,7 @@
 
 
 ## Installation
-* You need Node.JS and MySQL installed on your server 
+* You need Node.JS, MySQL and Docker installed on your server 
 * Install dependencies: `npm install`
 * If you need special environment variables: rename the file `.env-example` to `.env` and set them there
 
@@ -67,3 +67,9 @@ query {
   }
 }
 ```
+
+## Docker installation
+* Docker instruction for [Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
+* Docker post-installation steps for [Linux](https://docs.docker.com/install/linux/linux-postinstall/)
+* Docker-compose [instruction](https://docs.docker.com/compose/install/)
+
